@@ -30,8 +30,8 @@ jobs:
 
       - name: Install and Start Appium
         run: |
-          npm install -g appium@v1.20.2
-          nohup appium > appium.log 2>&1 &
+          npm install -g appium@v2.5.2
+          nohup appium -pa /wd/hub > appium.log 2>&1 &
           echo "Starting Appium..."
           for i in {1..10}; do
             if curl -s http://127.0.0.1:4723/wd/hub/status | grep -q '"ready":true'; then
