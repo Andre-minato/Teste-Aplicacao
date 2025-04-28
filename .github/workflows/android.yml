@@ -55,4 +55,6 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: ${{ matrix.profile }}
+          disable-animations: true
+          emulator-options: '-no-window'
           script: mvn clean test -Pandroid
