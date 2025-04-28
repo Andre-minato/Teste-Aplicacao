@@ -1,9 +1,9 @@
 name: Java CI with Maven + Appium (Android 10)
 
 on:
-  pull_request:
+  push:
     branches: [ main ]
-
+  workflow_dispatch:
 jobs:
   build:
     runs-on: macos-latest
