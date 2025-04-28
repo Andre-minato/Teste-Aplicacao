@@ -1,0 +1,12 @@
+{
+  "Task Data": [
+    {
+      "TaskName" : "Curso Appium",
+      "TaskDesc" : "Utilização do Page Factory para interagir com os elementos"
+    },
+    {
+      "TaskName" : "Curso Appium + Java",
+      "TaskDesc" : "Utilização de Page Objeto para definir responsabilidades das classes"
+    }
+  ]
+}
