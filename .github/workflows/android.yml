@@ -37,14 +37,16 @@ jobs:
           target: google_apis
           arch: x86
           profile: pixel_5
-          emulator-options: -no-window -gpu swiftshader_indirect -no-audio -no-snapshot
+          emulator-options: -no-snapshot -no-window -no-audio -gpu swiftshader_indirect -no-boot-anim -no-metrics
           disable-animations: true
           script: |
+            echo "Waiting for emulator to boot..."
             adb wait-for-device
             boot_completed=""
-            while [ "$boot_completed" != "1" ]; do
+            until [[ "$boot_completed" == "1" ]]; do
               sleep 5
               boot_completed=$(adb shell getprop sys.boot_completed | tr -d '\r')
-              echo "Waiting for emulator... ($boot_completed)"
+              echo "Waiting... ($boot_completed)"
             done
+            echo "Emulator booted."
             ./gradlew connectedDebugAndroidTest
