@@ -60,4 +60,11 @@ jobs:
           emulator-options: '-no-window'
           enable-hw-keyboard: false
           disable-spellchecker: true
-
+          cores: 2
+          avd-name: test
+          force-avd-creation: true
+          emulator-boot-timeout: 600
+          emulator-port: 5554
+          disable-linux-hw-accel: auto
+          channel: stable
+          script: mvn clean test -Pandroid   # <-- Adicione essa linha
