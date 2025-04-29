@@ -20,8 +20,12 @@ jobs:
           java-version: 17
 
       - name: Decode keystore if needed (opcional)
-        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
-        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > keystore.jks
+        run: |
+          if [ -n "${{ secrets.KEYSTORE_BASE64 }}" ]; then
+            echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > keystore.jks
+          else
+            echo "No keystore secret provided, skipping decode step."
+          fi
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
