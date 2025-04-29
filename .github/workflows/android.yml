@@ -11,9 +11,9 @@ jobs:
 
     strategy:
       matrix:
-        api-level: [29]         # Android 10
-        target: [google_apis]
-        profile: [pixel_5]
+        api-level: [ 29 ]
+        target: [ google_apis_playstore ]  # <- muda aqui
+        profile: [ pixel_5 ]
 
     steps:
       - name: Checkout code
@@ -58,5 +58,6 @@ jobs:
           profile: ${{ matrix.profile }}
           disable-animations: true
           emulator-options: '-no-window'
-          script: mvn clean test -Pandroid
+          enable-hw-keyboard: false
+          disable-spellchecker: true
 
